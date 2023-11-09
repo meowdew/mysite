@@ -1,0 +1,34 @@
+#ph-1::first-letter{
+    font-size: 15vh;
+    color: #f1f0ed;
+}
+#ph-1{
+    font-size: 8vh;
+    color: #b7ae8f;
+    -webkit-font-smoothing: antialiased;
+    animation: font-face-animation 1.5s 1 ease;
+}
+.loading {
+    background-image: url("../../../public/bg-4.png");
+    background-position: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+@keyframes font-face-animation {
+    to {
+        font-size: 11vh;
+    }
+}
+
+
+.main-page-wrapper {
+    display: flex;
+    min-height: 100vh;
+    min-width: 100vw;
+}
