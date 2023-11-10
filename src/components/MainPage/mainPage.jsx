@@ -1,15 +1,16 @@
 import React from "react";
-import {Layout, Space, Divider, Carousel} from "antd";
-import {CopyrightTwoTone, GithubFilled, LinkedinFilled} from '@ant-design/icons';
+import { Layout, Space, Divider, Carousel } from "antd";
+import { CopyrightTwoTone, GithubFilled, LinkedinFilled } from '@ant-design/icons';
 
 import './mainPage.css'
 
 
-const {Header, Footer} = Layout;
+const { Footer } = Layout;
 const MainPage = (props) => {
   const title_upper = `DIANSHU`;
   const title_underneath = `ZHA`;
-  const display_content = ['full-stack developer', 'computer science alumni', 'beginner photographer'];
+  const display_content = ['full-stack developer', 'computer science alumni', 'photography beginner'];
+
 
   const handleOpenGithub = () => {
     window.open('https://github.com/purging5904');
@@ -19,12 +20,9 @@ const MainPage = (props) => {
     window.open('https://www.linkedin.com');
   }
 
-
   return (
     <div className={'main-page-container'}>
-      <Header className={'main-page-header'}>
-      </Header>
-      <Divider className={'main-page-divider'}/>
+      <Divider className={'main-page-divider'} />
       <div className={'title-container'}>
         <Space align={'center'} size={'large'}>
           <div className={'main-page-title'}>
@@ -37,9 +35,9 @@ const MainPage = (props) => {
       <div className={'marquee'}>
         <Carousel autoplay={true} dotPosition={'left'} effect={'fade'}>
           {
-            display_content.map((item) => {
+            display_content.map((item, index) => {
               return (
-                <div className={'carousel-content capitalize'}>
+                <div className={'carousel-content capitalize'} key={index}>
                   <div>{item.toLowerCase()}</div>
                 </div>
               )
@@ -56,22 +54,22 @@ const MainPage = (props) => {
           </div>
         </Space>
       </div>
-      <Divider className={'main-page-divider'}/>
-      <div className={'text-4xl align-middle'} style={{display: "flex", justifyContent: "center"}}>
+      <Divider className={'main-page-divider'} />
+      <div className={'text-4xl align-middle'} style={{ display: "flex", justifyContent: "center" }}>
         <Space size={'middle'}>
-          <GithubFilled onClick={handleOpenGithub}/>
-          <LinkedinFilled onClick={handleOpenLinkedin}/>
+          <GithubFilled onClick={handleOpenGithub} />
+          <LinkedinFilled onClick={handleOpenLinkedin} />
         </Space>
       </div>
       <Footer className={'main-page-footer'}>
         <Space size={'middle'}>
-          <text className={'align-bottom'}>
+          <p className={'align-bottom'}>
             {`Powered By React`}
-          </text>
-          <text className={'align-bottom'}>
-            <CopyrightTwoTone/>
+          </p>
+          <p className={'align-bottom'}>
+            <CopyrightTwoTone />
             {` 2023 |  All Right Reserved. `}
-          </text>
+          </p>
         </Space>
       </Footer>
     </div>

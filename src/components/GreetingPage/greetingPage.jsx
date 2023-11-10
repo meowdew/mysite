@@ -1,17 +1,25 @@
-import React, {useState} from "react";
-import {Flex, Spin, Typography, ConfigProvider} from "antd";
+import React, { useEffect, useState } from "react";
+import { Flex, Spin, Typography, ConfigProvider } from "antd";
 
 import MainPage from "../MainPage/mainPage";
 
 import './greetingPage.css';
 
-const {Paragraph} = Typography;
-const GreetingPage = () => {
+const { Paragraph } = Typography;
+const GreetingPage = (props) => {
+
+  const { setNavBarVisibility } = props;
 
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    setNavBarVisibility(false);
+  }, [])
+
+
   const timer = setTimeout(() => {
     setLoading(false);
+    setNavBarVisibility(true);
   }, 1500);
   if (!loading) {
     window.clearTimeout(timer);
@@ -36,13 +44,13 @@ const GreetingPage = () => {
               }
             }
           }>
-            <Spin size={"large"} delay={100}/>
+            <Spin size={"large"} delay={100} />
           </ConfigProvider>
         </span>
       </div>
     ) : (
       <div>
-        <MainPage/>
+        <MainPage />
       </div>
     )
   )
