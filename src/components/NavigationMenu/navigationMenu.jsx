@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Menu, Layout } from "antd";
+import React, { useState } from 'react';
+import { Menu, Layout } from 'antd';
 import {
   HomeTwoTone,
   FileMarkdownTwoTone,
@@ -7,24 +7,24 @@ import {
   HeartTwoTone,
   IdcardTwoTone,
   MessageTwoTone,
-} from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+} from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
-import "./navigationMenu.css";
+import './navigationMenu.css';
 
 const { Header } = Layout;
 
 const NavigationMenu = (props) => {
   const navigate = useNavigate();
-  const [selectedKey, setSelectedKey] = useState("0");
+  const [selectedKey, setSelectedKey] = useState('0');
 
   const menuLabels = [
-    "Home",
-    "Blog",
-    "Gallery",
-    "Growth Experience",
-    "About Me",
-    "Contact Me",
+    'Home',
+    'Blog',
+    'Gallery',
+    'Growth Experience',
+    'About Me',
+    'Contact Me',
   ];
   const menuIcons = [
     <HomeTwoTone />,
@@ -45,17 +45,17 @@ const NavigationMenu = (props) => {
   const handleMenuItemClick = (e) => {
     const key = e.key;
     setSelectedKey(key);
-    if (key === "0") {
-      navigate("/MainPage");
-    } else if (key === "1") {
-      navigate("/Blog");
-    } else if (key === "2") {
-      navigate("/Gallery");
-    } else if (key === "3") {
+    if (key === '0') {
+      navigate('/MainPage');
+    } else if (key === '1') {
+      navigate('/Blog');
+    } else if (key === '2') {
+      navigate('/Gallery');
+    } else if (key === '3') {
       // navigate('/Timeline');
-    } else if (key === "4") {
+    } else if (key === '4') {
       // navigate('/AboutMe');
-    } else if (key === "5") {
+    } else if (key === '5') {
       // navigate('/Contact');
     }
   };
@@ -65,13 +65,13 @@ const NavigationMenu = (props) => {
       <Layout>
         <Header
           style={{
-            backgroundColor: "transparent",
-            display: "contents",
-            justifyContent: "center",
+            backgroundColor: 'transparent',
+            display: 'contents',
+            justifyContent: 'center',
           }}
         >
           <Menu
-            mode={"horizontal"}
+            mode={'horizontal'}
             items={items}
             onClick={handleMenuItemClick}
             selectedKeys={selectedKey}

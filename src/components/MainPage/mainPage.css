@@ -1,89 +1,89 @@
 .main-page-container {
-    background: linear-gradient(
-            192deg,
-            rgba(255, 1, 1, 0.8),
-            rgba(255, 33, 123, 0) 75%
-    ), linear-gradient(125deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 75%),
+  background: linear-gradient(
+      192deg,
+      rgba(255, 1, 1, 0.8),
+      rgba(255, 33, 123, 0) 75%
+    ),
+    linear-gradient(125deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 75%),
     linear-gradient(322deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 75%);
-    min-width: 100vw;
-    min-height: 100vh;
-    display: block;
-    font-size: 12vh;
-    font-weight: 900;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: block;
+  font-size: 12vh;
+  font-weight: 900;
 }
 
 .main-page-divider {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .main-page-footer {
-    background-color: transparent;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    font-size: 16px;
+  background-color: transparent;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
 }
 
-.main-page-footer > span{
-    width: 1em;
+.main-page-footer > span {
+  width: 1em;
 }
 
 .title-container {
-    margin-top: 2vw;
-    height: 42vh;
-    aspect-ratio: auto;
-    display: flex;
-    justify-content: center;
+  margin-top: 2vw;
+  height: 42vh;
+  aspect-ratio: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .main-page-title {
-    font-weight: 800;
-    font-size: 18vh;
-    display: flex;
-    justify-content: flex-end;
+  font-weight: 800;
+  font-size: 18vh;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .marquee {
-    height: 3vh;
+  height: 3vh;
 }
 
 .carousel-content > div {
-    margin-top: 2em;
-    display: flex;
-    justify-content: center;
-    font-size: 3vh;
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+  font-size: 3vh;
 }
 
 .black-circle {
-    color: #000;
-    background-color: #000;
-    border-radius: 10vh;
-    width: 15vh;
-    height: 15vh;
-    animation: black-circle-change-color 3s infinite ease-in;
+  color: #000;
+  background-color: #000;
+  border-radius: 10vh;
+  width: 15vh;
+  height: 15vh;
+  animation: black-circle-change-color 3s infinite ease-in;
 }
 
 .white-rectangle {
-    color: #fff;
-    background-color: #fff;
-    border-radius: 8vh;
-    width: 15vw;
-    height: 15vh;
-    animation: white-rectangle-to-circle 3s infinite ease;
+  color: #fff;
+  background-color: #fff;
+  border-radius: 8vh;
+  width: 15vw;
+  height: 15vh;
+  animation: white-rectangle-to-circle 3s infinite ease;
 }
 
 @keyframes white-rectangle-to-circle {
-    to {
-        border-radius: 10vh;
-        width: 15vh;
-        height: 15vh;
-    }
+  to {
+    border-radius: 10vh;
+    width: 15vh;
+    height: 15vh;
+  }
 }
 
 @keyframes black-circle-change-color {
-    to {
-        background: radial-gradient(
-        ellipse at top, #e2e7bf, transparent),
-        radial-gradient(ellipse at bottom, #f9e8d0, transparent);
-    }
+  to {
+    background: radial-gradient(ellipse at top, #e2e7bf, transparent),
+      radial-gradient(ellipse at bottom, #f9e8d0, transparent);
+  }
 }

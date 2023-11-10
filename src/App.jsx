@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import GreetingPage from "./components/GreetingPage/greetingPage";
-import MainPage from "./components/MainPage/mainPage";
-import Gallery from "./components/Gallery/gallery";
-import Blog from "./components/Blog/blog";
+import GreetingPage from './components/GreetingPage/greetingPage';
+import MainPage from './components/MainPage/mainPage';
+import Gallery from './components/Gallery/gallery';
+import Blog from './components/Blog/blog';
 
-import "./App.css";
-import NavigationMenu from "./components/NavigationMenu/navigationMenu";
+import './App.css';
+import NavigationMenu from './components/NavigationMenu/navigationMenu';
 
 const App = () => {
   const [navBarVisibility, setNavBarVisibility] = useState(true);
@@ -17,8 +17,8 @@ const App = () => {
       <BrowserRouter basename='/'>
         <div
           style={{
-            float: "left",
-            visibility: navBarVisibility ? "visible" : "hidden",
+            float: 'left',
+            visibility: navBarVisibility ? 'visible' : 'hidden',
           }}
         >
           <NavigationMenu />

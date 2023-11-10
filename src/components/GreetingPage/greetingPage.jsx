@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Flex, Spin, Typography, ConfigProvider } from "antd";
+import React, { useEffect, useState } from 'react';
+import { Flex, Spin, Typography, ConfigProvider } from 'antd';
 
-import MainPage from "../MainPage/mainPage";
+import MainPage from '../MainPage/mainPage';
 
-import "./greetingPage.css";
+import './greetingPage.css';
 
 const { Paragraph } = Typography;
 const GreetingPage = (props) => {
@@ -24,11 +24,11 @@ const GreetingPage = (props) => {
   }
 
   return loading ? (
-    <div className={"loading"}>
-      <Flex align={"center"} gap={"middle"}>
+    <div className={'loading'}>
+      <Flex align={'center'} gap={'middle'}>
         <Paragraph
-          className={"text-blue-700 text-opacity-90 capitalize"}
-          id={"ph-1"}
+          className={'text-blue-700 text-opacity-90 capitalize'}
+          id={'ph-1'}
         >{`Entering Mystery Space...`}</Paragraph>
       </Flex>
       <span>
@@ -40,11 +40,11 @@ const GreetingPage = (props) => {
               },
             },
             token: {
-              colorPrimary: "#fff",
+              colorPrimary: '#fff',
             },
           }}
         >
-          <Spin size={"large"} delay={100} />
+          <Spin size={'large'} delay={100} />
         </ConfigProvider>
       </span>
     </div>

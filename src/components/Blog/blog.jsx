@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import "./blog.css";
+import './blog.css';
 
 const Blog = () => {
   return (
