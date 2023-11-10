@@ -1,14 +1,9 @@
 import React from "react";
 
-import './gallery.css'
+import "./gallery.css";
 
 const Gallery = () => {
-	return (
-		<div className="gallery-wrapper">
-			
-		</div>
-	)
-}
-
+  return <div className='gallery-wrapper'></div>;
+};
 
 export default Gallery;
