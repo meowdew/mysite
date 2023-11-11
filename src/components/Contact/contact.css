@@ -1,0 +1,7 @@
+.contact-content {
+  display: inline-flex;
+  line-height: 5vh;
+  font-weight: bold;
+  font-size: 1.2em;
+  align-content: center;
+}

@@ -1,0 +1,17 @@
+.languages-list {
+  display: inline-block;
+  font-size: medium;
+  color: #2d0c13;
+  position: relative;
+  z-index: 3;
+  padding: 10px 10px;
+  transition: all 500ms ease;
+  border-radius: 8px;
+  line-height: 1em;
+}
+
+.languages-list:hover {
+  border: 2px solid #f4a83a;
+  background: linear-gradient(#f4a83a, #e4dfd7);
+  color: #0eb0c9;
+}

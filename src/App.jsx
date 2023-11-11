@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import GreetingPage from './components/GreetingPage/greetingPage';
@@ -10,8 +10,7 @@ import './App.css';
 import NavigationMenu from './components/NavigationMenu/navigationMenu';
 
 const App = () => {
-  const [navBarVisibility, setNavBarVisibility] = useState(true);
-
+  const [navBarVisibility, setNavBarVisibility] = useState(false);
   return (
     <div>
       <BrowserRouter basename='/'>
@@ -29,9 +28,18 @@ const App = () => {
             path='/'
             element={<GreetingPage setNavBarVisibility={setNavBarVisibility} />}
           />
-          <Route path='/MainPage' element={<MainPage />} />
-          <Route path='/Gallery' element={<Gallery />} />
-          <Route path='/Blog' element={<Blog />} />
+          <Route
+            path='/mainpage'
+            element={<MainPage setNavBarVisibility={setNavBarVisibility} />}
+          />
+          <Route
+            path='/gallery'
+            element={<Gallery setNavBarVisibility={setNavBarVisibility} />}
+          />
+          <Route
+            path='/blog'
+            element={<Blog setNavBarVisibility={setNavBarVisibility} />}
+          />
         </Routes>
       </BrowserRouter>
     </div>

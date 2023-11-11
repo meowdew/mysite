@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Menu, Layout } from 'antd';
 import {
   HomeTwoTone,
@@ -10,6 +10,10 @@ import {
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
+import Contact from '../Contact/contact';
+import GrowthTimeline from '../GrowthTimeline/growthTimeline';
+import AboutMe from '../AboutMe/aboutMe';
+
 import './navigationMenu.css';
 
 const { Header } = Layout;
@@ -17,14 +21,22 @@ const { Header } = Layout;
 const NavigationMenu = (props) => {
   const navigate = useNavigate();
   const [selectedKey, setSelectedKey] = useState('0');
+  const [contactOpen, setContactOpen] = useState(false);
+  const [timelineOpen, setTimelineOpen] = useState(false);
+  const [aboutMeOpen, setAboutMeOpen] = useState(false);
+
+  useEffect(() => {
+    const key = sessionStorage.getItem('key');
+    setSelectedKey(key);
+  }, []);
 
   const menuLabels = [
     'Home',
     'Blog',
     'Gallery',
-    'Growth Experience',
-    'About Me',
-    'Contact Me',
+    'My Growth',
+    'About',
+    'Contact',
   ];
   const menuIcons = [
     <HomeTwoTone />,
@@ -46,23 +58,26 @@ const NavigationMenu = (props) => {
     const key = e.key;
     setSelectedKey(key);
     if (key === '0') {
-      navigate('/MainPage');
+      navigate('/mainpage');
+      sessionStorage.setItem('key', key);
     } else if (key === '1') {
-      navigate('/Blog');
+      navigate('/blog');
+      sessionStorage.setItem('key', key);
     } else if (key === '2') {
-      navigate('/Gallery');
+      navigate('/gallery');
+      sessionStorage.setItem('key', key);
     } else if (key === '3') {
-      // navigate('/Timeline');
+      setTimelineOpen(true);
     } else if (key === '4') {
-      // navigate('/AboutMe');
+      setAboutMeOpen(true);
     } else if (key === '5') {
-      // navigate('/Contact');
+      setContactOpen(true);
     }
   };
 
   return (
     <div className='navigation-wrapper'>
-      <Layout>
+      <Layout style={{ background: 'transparent' }}>
         <Header
           style={{
             backgroundColor: 'transparent',
@@ -71,6 +86,7 @@ const NavigationMenu = (props) => {
           }}
         >
           <Menu
+            className={'menu-bar'}
             mode={'horizontal'}
             items={items}
             onClick={handleMenuItemClick}
@@ -78,6 +94,9 @@ const NavigationMenu = (props) => {
           />
         </Header>
       </Layout>
+      <GrowthTimeline open={timelineOpen} setOpen={setTimelineOpen} />
+      <AboutMe open={aboutMeOpen} setOpen={setAboutMeOpen} />
+      <Contact open={contactOpen} setOpen={setContactOpen} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Layout, Space, Divider, Carousel } from 'antd';
 import {
   CopyrightTwoTone,
@@ -10,6 +10,8 @@ import './mainPage.css';
 
 const { Footer } = Layout;
 const MainPage = (props) => {
+  const { setNavBarVisibility } = props;
+
   const title_upper = `DIANSHU`;
   const title_underneath = `ZHA`;
   const display_content = [
@@ -18,6 +20,9 @@ const MainPage = (props) => {
     'photography beginner',
   ];
 
+  useEffect(() => {
+    setNavBarVisibility(true);
+  }, []);
   const handleOpenGithub = () => {
     window.open('https://github.com/purging5904');
   };

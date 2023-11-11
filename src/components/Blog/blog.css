@@ -3,13 +3,41 @@
   width: 100vw;
   height: 100vh;
   text-align: center;
+  position: relative;
+  z-index: -10;
+  background-color: #f7de98;
+  scroll-behavior: smooth;
 }
 
 .welcome-image {
+  background-image: url('../../../public/iceland-1979445_1280.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
   height: 25vh;
   aspect-ratio: auto;
   display: flex;
   justify-content: center;
-  position: sticky;
-  top: 7vh;
+  position: relative;
+  top: 72px;
+  z-index: -3;
+}
+
+.content-wrapper {
+  display: inline-flex;
+  justify-content: center;
+  max-height: 100vh;
+  position: relative;
+  top: 125px;
+}
+
+.articles {
+  padding-top: 25vh;
+  max-height: 100vh;
+  display: flex;
+  width: 80vh;
+  justify-content: center;
+}
+
+.preview {
+  padding-top: 25vh;
 }

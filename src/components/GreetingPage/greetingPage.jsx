@@ -10,10 +10,9 @@ const GreetingPage = (props) => {
   const { setNavBarVisibility } = props;
 
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
-    setNavBarVisibility(false);
-  }, []);
+    sessionStorage.setItem('key', '0');
+  });
 
   const timer = setTimeout(() => {
     setLoading(false);
@@ -50,7 +49,7 @@ const GreetingPage = (props) => {
     </div>
   ) : (
     <div>
-      <MainPage />
+      <MainPage setNavBarVisibility={setNavBarVisibility} />
     </div>
   );
 };
