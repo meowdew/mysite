@@ -1,12 +1,9 @@
 .blog-wrapper {
   display: block;
-  width: 100vw;
-  height: 100vh;
-  text-align: center;
-  position: relative;
-  z-index: -10;
   background-color: #f7de98;
   scroll-behavior: smooth;
+  padding: 75px 0;
+  text-align: center;
 }
 
 .welcome-image {
@@ -17,27 +14,30 @@
   aspect-ratio: auto;
   display: flex;
   justify-content: center;
-  position: relative;
-  top: 72px;
-  z-index: -3;
 }
 
 .content-wrapper {
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   max-height: 100vh;
-  position: relative;
-  top: 125px;
+  min-width: 65vw;
+  margin: 50px 0;
 }
 
 .articles {
-  padding-top: 25vh;
   max-height: 100vh;
   display: flex;
   width: 80vh;
   justify-content: center;
 }
 
-.preview {
-  padding-top: 25vh;
+.calendar {
+  display: flex;
+  overflow: auto;
+  float: right;
+  max-width: 25vw;
+}
+
+.blog-list {
+  width: inherit;
 }

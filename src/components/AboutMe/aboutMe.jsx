@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, Divider } from 'antd';
+import { Drawer } from 'antd';
 
 import './aboutMe.css';
 import Paragraph from 'antd/lib/typography/Paragraph';
@@ -26,6 +26,7 @@ const AboutMe = (props) => {
   return (
     <div className={'about-me-wrapper'}>
       <Drawer
+        className={'about-me-drawer'}
         title={'About Me'}
         open={open}
         onClose={handleDrawerClose}

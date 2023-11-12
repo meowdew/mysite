@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Flex, Spin, Typography, ConfigProvider } from 'antd';
+import {useNavigate} from "react-router-dom";
 
-import MainPage from '../MainPage/mainPage';
 
 import './greetingPage.css';
 
@@ -9,18 +9,22 @@ const { Paragraph } = Typography;
 const GreetingPage = (props) => {
   const { setNavBarVisibility } = props;
 
+  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     sessionStorage.setItem('key', '0');
-  });
+    const timer = setTimeout(() => {
+      setLoading(false);
+      setNavBarVisibility(true);
+      navigate('/mainpage');
+    }, 1500);
+    return () => {
+      window.clearTimeout(timer);
+    }
+  }, []);
 
-  const timer = setTimeout(() => {
-    setLoading(false);
-    setNavBarVisibility(true);
-  }, 1500);
-  if (!loading) {
-    window.clearTimeout(timer);
-  }
+
 
   return loading ? (
     <div className={'loading'}>
@@ -48,9 +52,7 @@ const GreetingPage = (props) => {
       </span>
     </div>
   ) : (
-    <div>
-      <MainPage setNavBarVisibility={setNavBarVisibility} />
-    </div>
+    <></>
   );
 };
 

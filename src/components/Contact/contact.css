@@ -5,3 +5,12 @@
   font-size: 1.2em;
   align-content: center;
 }
+
+.contact-drawer {
+  opacity: 75%;
+  transition: all 0.5s linear;
+}
+
+.contact-drawer:hover{
+  opacity: 100%;
+}

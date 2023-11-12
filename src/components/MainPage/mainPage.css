@@ -61,7 +61,7 @@
   border-radius: 10vh;
   width: 15vh;
   height: 15vh;
-  animation: black-circle-change-color 3s infinite ease-in;
+  animation: black-circle-change-color 3s infinite ease;
 }
 
 .white-rectangle {

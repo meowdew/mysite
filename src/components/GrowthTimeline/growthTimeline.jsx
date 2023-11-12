@@ -36,6 +36,7 @@ const GrowthTimeline = (props) => {
   return (
     <div className={'timeline-wrapper'}>
       <Drawer
+        className={'timeline-drawer'}
         open={open}
         onClose={handleDrawerClose}
         title={'My Growth Timeline'}

@@ -1,14 +1,9 @@
 .gallery-wrapper {
-  padding-top: 100px;
-  position: relative;
+  display: block;
+  justify-content: center;
+  background-color: #f7de98;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  background-color: #f7de98;
-  z-index: -10;
-}
-
-.display {
-  position: relative;
-  z-index: -5;
+  padding: 20vh 20vw;
+  align-content: revert;
 }

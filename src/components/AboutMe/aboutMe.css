@@ -15,3 +15,12 @@
   background: linear-gradient(#f4a83a, #e4dfd7);
   color: #0eb0c9;
 }
+
+.about-me-drawer {
+  opacity: 75%;
+  transition: all 0.5s linear;
+}
+
+.about-me-drawer:hover{
+  opacity: 100%;
+}

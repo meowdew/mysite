@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Divider, Drawer, Space } from 'antd';
+import React from 'react';
+import { Divider, Drawer, } from 'antd';
 import { MailOutlined, QqOutlined } from '@ant-design/icons';
 
 import './contact.css';
@@ -14,6 +14,7 @@ const Contact = (props) => {
   return (
     <div className={'contact-wrapper'}>
       <Drawer
+        className={'contact-drawer'}
         open={open}
         title={'Contact Me'}
         onClose={handleDrawerClose}
