@@ -11,6 +11,6 @@
   transition: all 0.5s linear;
 }
 
-.contact-drawer:hover{
+.contact-drawer:hover {
   opacity: 100%;
 }

@@ -1,8 +1,8 @@
 .timeline-drawer {
-    opacity: 70%;
-    transition: all 0.5s linear;
+  opacity: 70%;
+  transition: all 0.5s linear;
 }
 
-.timeline-drawer:hover{
-    opacity: 100%;
+.timeline-drawer:hover {
+  opacity: 100%;
 }

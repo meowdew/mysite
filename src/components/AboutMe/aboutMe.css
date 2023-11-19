@@ -21,6 +21,6 @@
   transition: all 0.5s linear;
 }
 
-.about-me-drawer:hover{
+.about-me-drawer:hover {
   opacity: 100%;
 }

@@ -1,0 +1,50 @@
+.post-wrapper {
+  background-color: #f9e8d0;
+}
+
+.blog-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 50vw;
+  min-height: 100vh;
+  background-color: white;
+  justify-content: left;
+  margin: 2vh 20vw;
+  padding: 4em 2vw;
+  border-radius: 10px;
+}
+
+.float-bar {
+  display: inline-block;
+  position: sticky;
+  top: 2em;
+  left: 2em;
+}
+
+.markdown{
+  line-height: 2rem;
+}
+
+p {
+  font-weight: normal;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: xxx-large;
+}
+
+code {
+  background: #e2e7bf;
+}
+
+pre {
+  background-color: #0eb0c9;
+  border: 1px solid #f4a83a;
+  border-radius: 10px;
+  display: flex;
+}
+pre > code {
+  padding: 1rem 2rem;
+  background: transparent;
+}

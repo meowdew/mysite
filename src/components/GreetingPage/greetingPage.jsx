@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Flex, Spin, Typography, ConfigProvider } from 'antd';
-import {useNavigate} from "react-router-dom";
-
+import { useNavigate } from 'react-router-dom';
 
 import './greetingPage.css';
 
@@ -21,10 +20,8 @@ const GreetingPage = (props) => {
     }, 1500);
     return () => {
       window.clearTimeout(timer);
-    }
+    };
   }, []);
-
-
 
   return loading ? (
     <div className={'loading'}>

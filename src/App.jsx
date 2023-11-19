@@ -5,7 +5,7 @@ import GreetingPage from './components/GreetingPage/greetingPage';
 import MainPage from './components/MainPage/mainPage';
 import Gallery from './components/Gallery/gallery';
 import Blog from './components/Blog/blog';
-
+import Post from './components/Blog/Post/post';
 import './App.css';
 import NavigationMenu from './components/NavigationMenu/navigationMenu';
 
@@ -39,6 +39,10 @@ const App = () => {
           <Route
             path='/blog'
             element={<Blog setNavBarVisibility={setNavBarVisibility} />}
+          />
+          <Route
+            path='/blog/posts/:id'
+            element={<Post setNavBarVisibility={setNavBarVisibility} />}
           />
         </Routes>
       </BrowserRouter>

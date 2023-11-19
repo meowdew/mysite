@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, Drawer, } from 'antd';
+import { Divider, Drawer } from 'antd';
 import { MailOutlined, QqOutlined } from '@ant-design/icons';
 
 import './contact.css';
