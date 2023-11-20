@@ -12,7 +12,7 @@ const AboutMe = (props) => {
   };
 
   const languages = [
-    'C/C++/C#',
+    'C/C++',
     'Python',
     'JavaScript/TypeScript',
     'Nodejs/Express',
@@ -36,7 +36,8 @@ const AboutMe = (props) => {
           👋Hello there, I'm a computer science alumni from Washington State
           University. I have just got in touched with frontend technology for a
           year, pretty taking interest in making myself more experienced in this
-          field. I value myself a computer science believer.😊
+          field. I will continuously gain more experience and explore more fun
+          stuff😊
         </Paragraph>
         <div className={'languages text-black font-medium text-xl'}>
           👉My Tech Stack:

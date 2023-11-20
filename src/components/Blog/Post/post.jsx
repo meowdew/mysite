@@ -22,6 +22,15 @@ marked.setOptions({
     return hljs.highlightAuto(code).value;
   },
 });
+
+// const renderer = new marked.Renderer();
+// renderer.paragraph = (text) => {
+//   const replacedText = text.replace(/\n/g, '<br><br>');
+//   return `<p>${replacedText}</p>`;
+// };
+
+// marked.use({ renderer });
+
 const Post = (props) => {
   const { setNavBarVisibility } = props;
   const token = process.env.REACT_APP_BLOG_OBTAIN_TOKEN;
@@ -39,7 +48,7 @@ const Post = (props) => {
       });
       if (res.data?.post) {
         setPost(res.data?.post);
-        const parsed = marked.parse(res.data?.post?.content);
+        const parsed = marked.parse(res.data?.post?.content, { breaks: true });
         setMarkdown(purify.sanitize(parsed));
       } else throw new Error('Failed to fetch post!');
     };
