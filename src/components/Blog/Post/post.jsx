@@ -5,19 +5,30 @@ import {
   HeartTwoTone,
   UpCircleTwoTone,
 } from '@ant-design/icons';
-import ReactMarkDown from 'react-markdown';
-import rehypeSanitize from 'rehype-sanitize';
+import { marked } from 'marked';
+import purify from 'dompurify';
+import hljs from 'highlight.js';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 import './post.css';
+import 'highlight.js/styles/rainbow.css';
 
+marked.setOptions({
+  highlight: (code, language) => {
+    if (hljs.getLanguage(language)) {
+      return hljs.highlight(code, { language }).value;
+    }
+    return hljs.highlightAuto(code).value;
+  },
+});
 const Post = (props) => {
   const { setNavBarVisibility } = props;
+  const token = process.env.REACT_APP_BLOG_OBTAIN_TOKEN;
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [isLiked, setIsLiked] = useState(false);
-  const token = process.env.REACT_APP_BLOG_OBTAIN_TOKEN;
+  const [markdown, setMarkdown] = useState(null);
 
   useEffect(() => {
     setNavBarVisibility(true);
@@ -28,34 +39,37 @@ const Post = (props) => {
       });
       if (res.data?.post) {
         setPost(res.data?.post);
+        const parsed = marked.parse(res.data?.post?.content);
+        setMarkdown(purify.sanitize(parsed));
       } else throw new Error('Failed to fetch post!');
     };
     fetchPost().catch((e) => console.error(e));
-    return () => {
-      const updateLikes = async () => {
-        await axios.post('https://localhost:8080/save/posts', {
-          credentials: token,
-          post: post,
-        });
-      };
-      updateLikes().catch((e) => console.error(e));
-    };
   }, []);
 
-  const handleLikeClick = () => {
+  useEffect(() => {
+    document.querySelectorAll('pre code').forEach((block) => {
+      hljs.highlightBlock(block);
+    });
+  }, [markdown]);
+
+  const handleLikeClick = async (timer) => {
+    const updateLikes = async (newPost) => {
+      await axios.post('http://localhost:8080/save/posts', {
+        credentials: token,
+        post: newPost,
+      });
+    };
     if (isLiked === false) {
-      setPost((prevState) => {
-        return {
-          ...prevState,
-          likes: prevState.likes + 1,
-        };
+      setPost((prevPost) => {
+        const updatedPost = { ...prevPost, likes: prevPost.likes + 1 };
+        updateLikes(updatedPost).catch((e) => console.error(e));
+        return updatedPost;
       });
     } else {
-      setPost((prevState) => {
-        return {
-          ...prevState,
-          likes: prevState.likes - 1,
-        };
+      setPost((prevPost) => {
+        const updatedPost = { ...prevPost, likes: prevPost.likes - 1 };
+        updateLikes(updatedPost).catch((e) => console.error(e));
+        return updatedPost;
       });
     }
     setIsLiked(!isLiked);
@@ -67,16 +81,10 @@ const Post = (props) => {
         <div className={'block px-24 pt-4'}>
           <div
             className={
-              'text-left font-medium text-lg min-h-screen align-middle'
+              'text-left font-medium text-lg min-h-screen align-middle leading-relaxed'
             }
-          >
-            <ReactMarkDown
-              className={'markdown'}
-              rehypePlugins={rehypeSanitize}
-            >
-              {post?.content}
-            </ReactMarkDown>
-          </div>
+            dangerouslySetInnerHTML={{ __html: markdown }}
+          ></div>
         </div>
       </div>
       <FloatButton.Group className={'float-bar'}>
@@ -91,14 +99,9 @@ const Post = (props) => {
           tooltip={<p>Like this article</p>}
         />
         <FloatButton.BackTop
+          icon={<UpCircleTwoTone />}
           style={{ backgroundColor: 'pink' }}
           tooltip={<p>Back to Top</p>}
-        />
-        <FloatButton
-          icon={<DownCircleTwoTone />}
-          style={{ backgroundColor: 'pink' }}
-          href={'#page-bottom'}
-          tooltip={<p>Go to Bottom</p>}
         />
       </FloatButton.Group>
       <span id={'page-bottom'}></span>
