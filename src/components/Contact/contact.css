@@ -1,9 +1,8 @@
 .contact-content {
-  display: inline-flex;
+  display: block;
   line-height: 5vh;
   font-weight: bold;
   font-size: 1.2em;
-  align-content: center;
 }
 
 .contact-drawer {

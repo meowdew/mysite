@@ -1,6 +1,8 @@
 .navigation-wrapper {
   width: 100vw;
   font-weight: 500;
+  position: absolute;
+  z-index: 2;
 }
 
 .menu-bar {

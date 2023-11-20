@@ -1,16 +1,17 @@
 .blog-wrapper {
   display: block;
-  background-color: #f7de98;
   scroll-behavior: smooth;
-  padding: 75px 0;
+  padding: 0;
   text-align: center;
+  background-color: #fbf2e3;
 }
 
 .welcome-image {
-  background-image: url('../../../public/iceland-1979445_1280.jpg');
+  background-image: url('../../../public/fantasy-2049567_1920.jpg');
   background-position: center;
   background-repeat: no-repeat;
-  height: 25vh;
+  background-size: cover;
+  height: 40vh;
   aspect-ratio: auto;
   display: flex;
   justify-content: center;

@@ -12,7 +12,7 @@ import NavigationMenu from './components/NavigationMenu/navigationMenu';
 const App = () => {
   const [navBarVisibility, setNavBarVisibility] = useState(false);
   return (
-    <div>
+    <div style={{ position: 'relative' }}>
       <BrowserRouter basename='/'>
         <div
           style={{

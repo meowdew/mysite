@@ -17,10 +17,6 @@ const Blog = (props) => {
 
   const navigate = useNavigate();
 
-  const handlePaginationChange = (page) => {
-    setRenderStartIndex(10 * (page - 1));
-  };
-
   useEffect(() => {
     setNavBarVisibility(true);
     const getBlogs = async () => {
@@ -61,6 +57,33 @@ const Blog = (props) => {
     getCategory().catch((e) => console.error(e));
   }, []);
 
+  const handlePaginationChange = (page) => {
+    setRenderStartIndex(10 * (page - 1));
+  };
+
+  const handleTagClick = (tag) => {
+    return () => {
+      setBlogs((prevState) => {
+        return prevState.filter((item) => {
+          for (const t of item?.tags) {
+            if (t === tag) return true;
+          }
+          return false;
+        });
+      });
+    };
+  };
+
+  const handleCategoryLabelClick = (category) => {
+    return () => {
+      setBlogs((prevState) => {
+        return prevState.filter((item) => {
+          return item.category === category;
+        });
+      });
+    };
+  };
+
   return (
     <div className={'blog-wrapper'}>
       <div className={'welcome-image'}></div>
@@ -76,7 +99,7 @@ const Blog = (props) => {
                   const title = (
                     <button
                       className={
-                        'hover:text-sky-600 transition-all font-sans font-bold'
+                        'hover:text-sky-600 transition-all font-sans font-bold text-2xl'
                       }
                       onClick={() => {
                         navigate(`/blog/posts/${post?.post_id}`);
@@ -88,12 +111,19 @@ const Blog = (props) => {
                   return (
                     <li key={index} className={''}>
                       <Card
-                        className={'blog-card text-left my-1.5'}
+                        className={
+                          'blog-card text-left my-1.5 font-sans text-lg'
+                        }
                         title={title}
+                        style={{ backgroundColor: '#bfe2e7' }}
                       >
                         <p>{post?.abstract}</p>
                         <Divider className={'invisible'} />
-                        <div className={'font-mono italic font-bold '}>
+                        <div
+                          className={
+                            'font-sans italic font-medium oldstyle-nums text-black text-lg'
+                          }
+                        >
                           <span>
                             {`Posted on ${post?.date.split('T')[0]}, at ${
                               post?.date.split('T')[1].split('.')[0]
@@ -117,8 +147,9 @@ const Blog = (props) => {
           direction={'vertical'}
           size={'small'}
           className={
-            'flex-auto max-w-xs bg-sky-600 rounded-md mt-1.5 ml-1.5 max-h-fit'
+            'flex-auto max-w-xs rounded-md mt-1.5 ml-1.5 max-h-fit pb-10'
           }
+          style={{ backgroundColor: '#e3ecfb' }}
         >
           <div className={'block avatar pt-4'}>
             <Avatar
@@ -148,8 +179,8 @@ const Blog = (props) => {
             <EnvironmentFilled />
             <p className={'pl-2'}>Pullman, WA, USA</p>
           </div>
-          <Divider style={{ borderColor: 'black', color: '#01ff02' }}>
-            Hot Tags
+          <Divider style={{ borderColor: 'black', color: '#141608' }}>
+            Article Tags
           </Divider>
           <div className={'flex justify-evenly'}>
             {tagStat.length &&
@@ -159,17 +190,36 @@ const Blog = (props) => {
                   return b?.count - a?.count;
                 })
                 .map((tag, index) => {
-                  return <button key={index}>{tag?._id}</button>;
+                  return (
+                    <button
+                      key={index}
+                      className={
+                        'bg-blue-200 px-2.5 py-1 rounded-t-md rounded-l-md font-sans'
+                      }
+                      onClick={handleTagClick(tag?._id)}
+                    >
+                      {tag?._id}
+                    </button>
+                  );
                 })}
           </div>
-          <Divider style={{ borderColor: 'black', color: '#01ff02' }}>
+          <Divider style={{ borderColor: 'black', color: '#141608' }}>
             Category
           </Divider>
           <div className={'flex justify-evenly'}>
             {categoryStat
               .sort((a, b) => b?.count - a?.count)
               .map((category, index) => {
-                return <button key={index}>{category?._id}</button>;
+                return (
+                  <button
+                    className={
+                      'bg-blue-200 px-2.5 py-1 rounded-t-md rounded-l-md font-sans'
+                    }
+                    onClick={handleCategoryLabelClick(category?._id)}
+                  >
+                    {category?._id}
+                  </button>
+                );
               })}
           </div>
         </Space>

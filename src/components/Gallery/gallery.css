@@ -1,9 +1,9 @@
 .gallery-wrapper {
   display: block;
-  justify-content: center;
-  background-color: #f7de98;
-  width: 100vw;
-  height: 100vh;
-  padding: 20vh 20vw;
-  align-content: revert;
+  justify-content: left;
+  background-color: #fbf2e3;
+  min-height: 100vh;
+  min-width: 100vw;
+  max-height: fit-content;
+  padding-top: 15vh;
 }

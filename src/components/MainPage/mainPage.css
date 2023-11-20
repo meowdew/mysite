@@ -39,9 +39,10 @@
 
 .main-page-title {
   font-weight: 800;
-  font-size: 18vh;
+  font-size: 20vh;
   display: flex;
-  justify-content: flex-end;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .marquee {
@@ -61,6 +62,7 @@
   border-radius: 10vh;
   width: 15vh;
   height: 15vh;
+  margin-top: 1.25rem;
   animation: black-circle-change-color 3s infinite ease;
 }
 
@@ -70,6 +72,7 @@
   border-radius: 8vh;
   width: 15vw;
   height: 15vh;
+  margin-top: 1.25rem;
   animation: white-rectangle-to-circle 3s infinite ease;
 }
 

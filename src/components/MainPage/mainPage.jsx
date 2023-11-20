@@ -17,7 +17,8 @@ const MainPage = (props) => {
   const display_content = [
     'full-stack developer',
     'computer science alumni',
-    'photography beginner',
+    'gamer',
+    'life challenger',
   ];
 
   useEffect(() => {

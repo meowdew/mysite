@@ -20,7 +20,7 @@ const Contact = (props) => {
         onClose={handleDrawerClose}
         placement={'left'}
       >
-        <div className={'contact-content space-x-4'}>
+        <div className={'contact-content space-x-4 mt-4'}>
           <span>
             <p
               className={'text-xl text-amber-600'}
@@ -28,16 +28,15 @@ const Contact = (props) => {
           </span>
         </div>
         <Divider className={'border-0'}></Divider>
-        <div className={'contact-content space-x-4'}>
+        <div className={'contact-content space-x-4 absolute bottom-28'}>
           <MailOutlined />
           <a href={'mailto:redmnq77249@gmail.com'}>{`redmnq77249@gmail.com`}</a>
         </div>
         <br />
-        <div className={'contact-content space-x-4'}>
+        <div className={'contact-content space-x-4 absolute bottom-10'}>
           <QqOutlined />
-          <p>{`1095607533`}</p>
+          <span>{`1095607533`}</span>
         </div>
-        <div className={'contact-content space-x-4'}></div>
       </Drawer>
     </div>
   );
