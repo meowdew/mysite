@@ -34,6 +34,7 @@ marked.setOptions({
 const Post = (props) => {
   const { setNavBarVisibility } = props;
   const token = process.env.REACT_APP_BLOG_OBTAIN_TOKEN;
+  const URL = process.env.REACT_APP_URL_ENDPOINT;
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [isLiked, setIsLiked] = useState(false);
@@ -42,7 +43,7 @@ const Post = (props) => {
   useEffect(() => {
     setNavBarVisibility(true);
     const fetchPost = async () => {
-      const res = await axios.post('http://localhost:8080/query/posts', {
+      const res = await axios.post(`${URL}/query/posts`, {
         credentials: token,
         post_id: id,
       });
@@ -61,9 +62,9 @@ const Post = (props) => {
     });
   }, [markdown]);
 
-  const handleLikeClick = async (timer) => {
+  const handleLikeClick = async () => {
     const updateLikes = async (newPost) => {
-      await axios.post('http://localhost:8080/save/posts', {
+      await axios.post(`${URL}/save/posts`, {
         credentials: token,
         post: newPost,
       });

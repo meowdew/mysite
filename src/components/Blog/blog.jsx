@@ -14,6 +14,7 @@ const Blog = (props) => {
   const [tagStat, setTagStat] = useState([]);
   const [categoryStat, setCategoryStat] = useState([]);
   const token = process.env.REACT_APP_BLOG_OBTAIN_TOKEN;
+  const URL = process.env.REACT_APP_URL_ENDPOINT;
 
   const navigate = useNavigate();
 
@@ -21,7 +22,7 @@ const Blog = (props) => {
     setNavBarVisibility(true);
     const getBlogs = async () => {
       try {
-        const res = await axios.post('http://localhost:8080/query/blogs', {
+        const res = await axios.post(`${URL}/query/blogs`, {
           credentials: token,
         });
         setBlogs(res.data?.posts);
@@ -34,7 +35,7 @@ const Blog = (props) => {
 
     const getHotTags = async () => {
       try {
-        const res = await axios.post('http://localhost:8080/query/hot-tags', {
+        const res = await axios.post(`${URL}/query/hot-tags`, {
           credentials: token,
         });
         setTagStat(res.data?.tag_stat);
@@ -46,7 +47,7 @@ const Blog = (props) => {
 
     const getCategory = async () => {
       try {
-        const res = await axios.post('http://localhost:8080/query/category', {
+        const res = await axios.post(`${URL}/query/category`, {
           credentials: token,
         });
         setCategoryStat(res.data?.category_stat);

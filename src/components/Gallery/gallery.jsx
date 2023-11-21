@@ -6,6 +6,7 @@ import './gallery.css';
 const Gallery = (props) => {
   const { setNavBarVisibility } = props;
   const token = process.env.REACT_APP_BLOG_OBTAIN_TOKEN;
+  const URL = process.env.REACT_APP_URL_ENDPOINT;
   const [loading, setLoading] = useState(true);
   const [images, setImages] = useState([]);
   const [fetched, setFetched] = useState(false);
@@ -13,13 +14,12 @@ const Gallery = (props) => {
     setNavBarVisibility(true);
 
     const fetchAlbum = async () => {
-      const res = await axios.post('http://localhost:8080/query/album', {
+      const res = await axios.post(`${URL}/query/album`, {
         credentials: token,
       });
       setImages(res.data?.collection);
       setFetched(true);
       setLoading(false);
-      console.log(res.data?.collection);
     };
     fetchAlbum().catch((e) => console.error(e));
   }, []);
@@ -34,7 +34,7 @@ const Gallery = (props) => {
             return (
               <div key={index}>
                 <Image
-                  src={`http://localhost:8080/images/album/${image.filename}`}
+                  src={`${URL}/images/album/${image.filename}`}
                   height={'25vh'}
                   width={'25vw'}
                 />
