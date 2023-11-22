@@ -25,7 +25,7 @@ const MainPage = (props) => {
     setNavBarVisibility(true);
   }, []);
   const handleOpenGithub = () => {
-    window.open('https://github.com/purging5904');
+    window.open('https://github.com/meowdew');
   };
 
   const handleOpenLinkedin = () => {
