@@ -163,10 +163,7 @@ const Blog = (props) => {
                 xxl: 100,
               }}
               icon={
-                <img
-                  src={'http://localhost:8080/images/myavatar.png'}
-                  alt={'my-avatar'}
-                />
+                <img src={`${URL}/images/myavatar.png`} alt={'my-avatar'} />
               }
             />
           </div>
