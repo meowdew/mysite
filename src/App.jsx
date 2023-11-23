@@ -12,41 +12,39 @@ import NavigationMenu from './components/NavigationMenu/navigationMenu';
 const App = () => {
   const [navBarVisibility, setNavBarVisibility] = useState(false);
   return (
-    <div style={{ position: 'relative' }}>
-      <BrowserRouter basename='/'>
-        <div
-          style={{
-            float: 'left',
-            visibility: navBarVisibility ? 'visible' : 'hidden',
-          }}
-        >
-          <NavigationMenu />
-        </div>
-        <Routes>
-          <Route
-            exact
-            path='/'
-            element={<GreetingPage setNavBarVisibility={setNavBarVisibility} />}
-          />
-          <Route
-            path='/mainpage'
-            element={<MainPage setNavBarVisibility={setNavBarVisibility} />}
-          />
-          <Route
-            path='/gallery'
-            element={<Gallery setNavBarVisibility={setNavBarVisibility} />}
-          />
-          <Route
-            path='/blog'
-            element={<Blog setNavBarVisibility={setNavBarVisibility} />}
-          />
-          <Route
-            path='/blog/posts/:id'
-            element={<Post setNavBarVisibility={setNavBarVisibility} />}
-          />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter basename='/'>
+      <div
+        style={{
+          float: 'left',
+          visibility: navBarVisibility ? 'visible' : 'hidden',
+        }}
+      >
+        <NavigationMenu />
+      </div>
+      <Routes>
+        <Route
+          exact
+          path='/'
+          element={<GreetingPage setNavBarVisibility={setNavBarVisibility} />}
+        />
+        <Route
+          path='/mainpage'
+          element={<MainPage setNavBarVisibility={setNavBarVisibility} />}
+        />
+        <Route
+          path='/gallery'
+          element={<Gallery setNavBarVisibility={setNavBarVisibility} />}
+        />
+        <Route
+          path='/blog'
+          element={<Blog setNavBarVisibility={setNavBarVisibility} />}
+        />
+        <Route
+          path='/blog/posts/:id'
+          element={<Post setNavBarVisibility={setNavBarVisibility} />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
