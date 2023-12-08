@@ -4,15 +4,12 @@ import axios from 'axios';
 
 import './gallery.css';
 const Gallery = (props) => {
-  const { setNavBarVisibility } = props;
   const token = process.env.REACT_APP_BLOG_OBTAIN_TOKEN;
   const URL = process.env.REACT_APP_URL_ENDPOINT;
   const [loading, setLoading] = useState(true);
   const [images, setImages] = useState([]);
   const [fetched, setFetched] = useState(false);
   useEffect(() => {
-    setNavBarVisibility(true);
-
     const fetchAlbum = async () => {
       const res = await axios.post(`${URL}/query/album`, {
         credentials: token,

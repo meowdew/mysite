@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import './blog.css';
 
 const Blog = (props) => {
-  const { setNavBarVisibility } = props;
   const [blogs, setBlogs] = useState([]);
   const [blogsLoading, setBlogsLoading] = useState(true);
   const [renderStartIndex, setRenderStartIndex] = useState(0);
@@ -19,7 +18,6 @@ const Blog = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setNavBarVisibility(true);
     const getBlogs = async () => {
       try {
         const res = await axios.post(`${URL}/query/blogs`, {

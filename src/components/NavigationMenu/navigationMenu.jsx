@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Menu, Layout } from 'antd';
+import { Menu, Layout, Avatar } from 'antd';
 import {
   HomeTwoTone,
   FileMarkdownTwoTone,
@@ -58,7 +58,7 @@ const NavigationMenu = (props) => {
     const key = e.key;
     setSelectedKey(key);
     if (key === '0') {
-      navigate('/mainpage');
+      navigate('/');
       sessionStorage.setItem('key', key);
     } else if (key === '1') {
       navigate('/blog');
@@ -76,24 +76,17 @@ const NavigationMenu = (props) => {
   };
 
   return (
-    <div className='navigation-wrapper'>
-      <Layout style={{ background: 'transparent' }}>
-        <Header
-          style={{
-            backgroundColor: 'transparent',
-            display: 'contents',
-            justifyContent: 'center',
-          }}
-        >
-          <Menu
-            className={'menu-bar'}
-            mode={'horizontal'}
-            items={items}
-            onClick={handleMenuItemClick}
-            selectedKeys={selectedKey}
-          />
-        </Header>
-      </Layout>
+    <div className='container flex text-amber-50 align-super min-h-full mx-2 my-3 bg-amber-300 text-2xl justify-between'>
+      <div className={''}>
+        <img alt={''} src={'../../../public/'} />
+      </div>
+      <div className={''}></div>
+      <div className={'flex-row'}>
+        <button className={'flex flex-grow-0'}>123</button>
+        <button className={'flex flex-grow-0'}>123</button>
+        <button className={'flex flex-grow-0'}>123</button>
+      </div>
+
       <GrowthTimeline open={timelineOpen} setOpen={setTimelineOpen} />
       <AboutMe open={aboutMeOpen} setOpen={setAboutMeOpen} />
       <Contact open={contactOpen} setOpen={setContactOpen} />
