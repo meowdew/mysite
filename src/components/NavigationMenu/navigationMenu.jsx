@@ -11,7 +11,6 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 import Contact from '../Contact/contact';
-import GrowthTimeline from '../GrowthTimeline/growthTimeline';
 import AboutMe from '../AboutMe/aboutMe';
 
 import './navigationMenu.css';
@@ -22,35 +21,27 @@ const NavigationMenu = (props) => {
   const navigate = useNavigate();
   const [selectedKey, setSelectedKey] = useState('0');
   const [contactOpen, setContactOpen] = useState(false);
-  const [timelineOpen, setTimelineOpen] = useState(false);
   const [aboutMeOpen, setAboutMeOpen] = useState(false);
+
+  const URL = process.env.REACT_APP_URL_ENDPOINT;
 
   useEffect(() => {
     const key = sessionStorage.getItem('key');
     setSelectedKey(key);
   }, []);
 
-  const menuLabels = [
-    'Home',
-    'Blog',
-    'Gallery',
-    'My Growth',
-    'About',
-    'Contact',
-  ];
-  const menuIcons = [
-    <HomeTwoTone />,
-    <FileMarkdownTwoTone />,
-    <PictureTwoTone />,
-    <HeartTwoTone />,
-    <IdcardTwoTone />,
-    <MessageTwoTone />,
-  ];
+  const menuLabels = ['Home', 'Blog', 'Gallery', 'About', 'Contact'];
+  // const menuIcons = [
+  //   // <HomeTwoTone />,
+  //   // <FileMarkdownTwoTone />,
+  //   // <PictureTwoTone />,
+  //   // <IdcardTwoTone />,
+  //   // <MessageTwoTone />,
+  // ];
   const items = menuLabels.map((item, index) => {
     return {
       label: item,
       key: index.toString(),
-      icon: menuIcons[index],
     };
   });
 
@@ -67,27 +58,34 @@ const NavigationMenu = (props) => {
       navigate('/gallery');
       sessionStorage.setItem('key', key);
     } else if (key === '3') {
-      setTimelineOpen(true);
-    } else if (key === '4') {
       setAboutMeOpen(true);
-    } else if (key === '5') {
+    } else if (key === '4') {
       setContactOpen(true);
     }
   };
 
   return (
-    <div className='container flex text-amber-50 align-super min-h-full mx-2 my-3 bg-amber-300 text-2xl justify-between'>
-      <div className={''}>
-        <img alt={''} src={'../../../public/'} />
+    <div>
+      <div
+        className='flex min-h-full items-center justify-between m-2 font-medium backdrop-blur-xl rounded-xl px-10 py-1
+                  shadow-2xl'
+      >
+        <div className={'w-24'}>
+          <Avatar
+            size={'large'}
+            icon={<img src={`${URL}/images/myavatar.png`} alt={'avatar'} />}
+          />
+        </div>
+        <div className={'flex justify-end gap-10 mr-3 items-center w-fit '}>
+          <Menu
+            items={items}
+            mode={'horizontal'}
+            className={'bg-transparent'}
+            defaultSelectedKeys={[selectedKey]}
+            onClick={handleMenuItemClick}
+          />
+        </div>
       </div>
-      <div className={''}></div>
-      <div className={'flex-row'}>
-        <button className={'flex flex-grow-0'}>123</button>
-        <button className={'flex flex-grow-0'}>123</button>
-        <button className={'flex flex-grow-0'}>123</button>
-      </div>
-
-      <GrowthTimeline open={timelineOpen} setOpen={setTimelineOpen} />
       <AboutMe open={aboutMeOpen} setOpen={setAboutMeOpen} />
       <Contact open={contactOpen} setOpen={setContactOpen} />
     </div>

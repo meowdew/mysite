@@ -30,7 +30,7 @@ const AboutMe = (props) => {
         title={'About Me'}
         open={open}
         onClose={handleDrawerClose}
-        placement={'left'}
+        placement={'right'}
       >
         <Paragraph className={'font-sans font-medium text-sky-600 text-xl'}>
           👋Hello there, I'm a computer science alumni from Washington State

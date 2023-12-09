@@ -1,44 +1,42 @@
-.blog-wrapper {
-  display: block;
-  scroll-behavior: smooth;
-  padding: 0;
-  text-align: center;
-  background-color: #fbf2e3;
-}
+/*body{*/
+/*  background-image: url('../../../public/main-bg.jpg');*/
+/*  background-position: top;*/
+/*  background-repeat: no-repeat;*/
+/*}*/
 
-.welcome-image {
-  background-image: url('../../../public/fantasy-2049567_1920.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 40vh;
-  aspect-ratio: auto;
-  display: flex;
-  justify-content: center;
-}
+/*.welcome-image {*/
+/*  background-image: url('../../../public/fantasy-2049567_1920.jpg');*/
+/*  background-position: center;*/
+/*  background-repeat: no-repeat;*/
+/*  background-size: cover;*/
+/*  height: 40vh;*/
+/*  aspect-ratio: auto;*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*}*/
 
-.content-wrapper {
-  display: flex;
-  justify-content: center;
-  max-height: 100vh;
-  min-width: 65vw;
-  margin: 50px 0;
-}
+/*.content-wrapper {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  max-height: 100vh;*/
+/*  min-width: 65vw;*/
+/*  margin: 50px 0;*/
+/*}*/
 
-.articles {
-  max-height: 100vh;
-  display: flex;
-  width: 80vh;
-  justify-content: center;
-}
+/*.articles {*/
+/*  max-height: 100vh;*/
+/*  display: flex;*/
+/*  width: 80vh;*/
+/*  justify-content: center;*/
+/*}*/
 
-.calendar {
-  display: flex;
-  overflow: auto;
-  float: right;
-  max-width: 25vw;
-}
+/*.calendar {*/
+/*  display: flex;*/
+/*  overflow: auto;*/
+/*  float: right;*/
+/*  max-width: 25vw;*/
+/*}*/
 
-.blog-list {
-  width: inherit;
-}
+/*.blog-list {*/
+/*  width: inherit;*/
+/*}*/

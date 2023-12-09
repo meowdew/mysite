@@ -1,5 +1,25 @@
-body {
-  background-image: url('../../../public/main-bg.jpg');
-  background-position: top;
-  background-repeat: no-repeat;
+.hello {
+    position: relative;
+    background-image: url('../../../public/birmingham-museums-trust-B5evCyxk9Uo-unsplash.jpg');
+    color: transparent;
+    --webkit-background-clip: text;
+    background-clip: text;
+    background-position: top center;
+    text-shadow: 5px 10px;
+    transform: perspective(1000px) rotateX(10deg);
+    width: 100%;
+    animation: flow 10s ease-in-out infinite;
 }
+
+@keyframes flow {
+    0% {
+        background-position: top center;
+    }
+    50% {
+        background-position: bottom center;
+    }
+    100% {
+        background-position: top center;
+    }
+}
+

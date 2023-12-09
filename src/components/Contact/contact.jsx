@@ -18,7 +18,7 @@ const Contact = (props) => {
         open={open}
         title={'Contact Me'}
         onClose={handleDrawerClose}
-        placement={'left'}
+        placement={'right'}
       >
         <div className={'contact-content space-x-4 mt-4'}>
           <span>

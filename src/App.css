@@ -1,4 +1,4 @@
-body {
+body, html {
   cursor: url('../public/icons8-cursor.svg'), auto;
 }
 a:hover {
@@ -16,4 +16,10 @@ ul[role='menu']:hover {
 }
 li[role='menuitem']:hover {
   cursor: url('../public/icons8-cursor.svg'), auto;
+}
+
+html {
+  background-image: url("../public/main-bg.jpg");
+  background-position: top left;
+  background-repeat: no-repeat;
 }
