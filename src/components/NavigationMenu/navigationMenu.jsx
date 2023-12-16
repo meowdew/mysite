@@ -1,21 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Menu, Layout, Avatar } from 'antd';
-import {
-  HomeTwoTone,
-  FileMarkdownTwoTone,
-  PictureTwoTone,
-  HeartTwoTone,
-  IdcardTwoTone,
-  MessageTwoTone,
-} from '@ant-design/icons';
+import { Menu, Avatar } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 import Contact from '../Contact/contact';
 import AboutMe from '../AboutMe/aboutMe';
-
-import './navigationMenu.css';
-
-const { Header } = Layout;
 
 const NavigationMenu = (props) => {
   const navigate = useNavigate();
@@ -31,13 +19,7 @@ const NavigationMenu = (props) => {
   }, []);
 
   const menuLabels = ['Home', 'Blog', 'Gallery', 'About', 'Contact'];
-  // const menuIcons = [
-  //   // <HomeTwoTone />,
-  //   // <FileMarkdownTwoTone />,
-  //   // <PictureTwoTone />,
-  //   // <IdcardTwoTone />,
-  //   // <MessageTwoTone />,
-  // ];
+
   const items = menuLabels.map((item, index) => {
     return {
       label: item,
@@ -65,7 +47,7 @@ const NavigationMenu = (props) => {
   };
 
   return (
-    <div>
+    <div className={'sticky top-0 z-10'}>
       <div
         className='flex min-h-full items-center justify-between m-2 font-medium backdrop-blur-xl rounded-xl px-10 py-1
                   shadow-2xl'
@@ -80,7 +62,7 @@ const NavigationMenu = (props) => {
           <Menu
             items={items}
             mode={'horizontal'}
-            className={'bg-transparent'}
+            className={'bg-transparent text-amber-50'}
             defaultSelectedKeys={[selectedKey]}
             onClick={handleMenuItemClick}
           />

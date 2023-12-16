@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Carousel, Image } from 'antd';
+import { Image } from 'antd';
 import axios from 'axios';
 
-import './gallery.css';
 const Gallery = (props) => {
   const token = process.env.REACT_APP_BLOG_OBTAIN_TOKEN;
   const URL = process.env.REACT_APP_URL_ENDPOINT;
