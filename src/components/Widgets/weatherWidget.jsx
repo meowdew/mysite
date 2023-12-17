@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { Skeleton } from 'antd';
 import axios from 'axios';
 import { LocationIcon } from '../MyIcons/icons';
+import WeatherWidgetBody from './weatherWidgetBody';
 
 export default function WeatherWidget(props) {
-  const [city, setCity] = useState('');
-  const [country, setCountry] = useState('');
+  const [city, setCity] = useState('--');
+  const [country, setCountry] = useState('--');
   const [weather, setWeather] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const weatherIconUrl = 'https://openweathermap.org/img/wn/';
   const G_MAP_API_KEY = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
   const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
   const G_MAP_ENDPOINT_URL = process.env.REACT_APP_GOOGLE_MAP_API_URL;
@@ -37,6 +39,7 @@ export default function WeatherWidget(props) {
 
         fetchWeather().then((res) => {
           setWeather(res.data.current);
+          setLoading(false);
         });
       },
       (error) => console.log(error),
@@ -58,61 +61,26 @@ export default function WeatherWidget(props) {
           </span>
           <span>{`${city}, ${country}`}</span>
         </div>
-        <div className={'content w-full h-full flex text-sm'}>
-          <div className={'weather w-4/5'}>
-            <div className={'icon h-3/5 w-full flex justify-center'}>
-              <img
-                src={`${weatherIconUrl}${weather?.weather[0]?.icon}@2x.png`}
-                alt={`${weather?.weather[0]?.main}`}
-              />
-            </div>
-            <div
-              className={'description text-center font-bold'}
-            >{`${weather?.weather[0]?.main}`}</div>
-            <div className={'temp text-center'}>
-              {`${kelvinToCelcius(weather?.temp).toFixed(1)} °C`}
-            </div>
-          </div>
-          <div className={'weather-info w-full text-center'}>
-            <div className={'title border-b border-black'}>Detail</div>
-            <div className={'feels-like flex justify-between'}>
-              <span>Feels Like</span>
-              <span>{`${kelvinToCelcius(weather?.feels_like).toFixed(
-                1,
-              )} °C`}</span>
-            </div>
-            <div className={'pressure flex justify-between'}>
-              <span>Pressure</span>
-              <span>{`${weather?.pressure} hPa`}</span>
-            </div>
-            <div className={'humidity flex justify-between'}>
-              <span>Humidity</span>
-              <span>{`${weather?.humidity} %`}</span>
-            </div>
-            <div className={'wind flex justify-between'}>
-              <span>Wind</span>
-              <span>{`${(weather?.wind_speed * 3.6).toFixed(1)} km/h`}</span>
-            </div>
-            <div className={'visibility flex justify-between'}>
-              <span>Visibility</span>
-              <span>{`${(weather?.visibility / 1000).toFixed(1)} km`}</span>
-            </div>
-          </div>
-        </div>
+        {loading ? (
+          <Skeleton paragraph={{ rows: 4 }} />
+        ) : (
+          <WeatherWidgetBody weather={weather} />
+        )}
         <div
           className={
             'footer flex justify-between border-t-[1px] border-black p-1 text-xs flex-wrap'
           }
         >
           <span>{`API Powered By openweathermap.org`}</span>
-          <span>{`${dateStringToMonth(new Date().toLocaleDateString())}`}</span>
+          <span>{`${getCurrentDate()}`}</span>
         </div>
       </div>
     </>
   );
 }
 
-function dateStringToMonth(dateString) {
+function getCurrentDate() {
+  const dateString = new Date();
   const monthDict = {
     '01': 'Jan',
     '02': 'Feb',
@@ -127,16 +95,9 @@ function dateStringToMonth(dateString) {
     11: 'Nov',
     12: 'Dec',
   };
-  const month = dateString.split('/')[1];
-  const day = dateString.split('/')[2];
+
+  const month = dateString.getMonth() + 1;
+  const day = dateString.getDate();
 
   return `${monthDict[month]} ${day}`;
-}
-
-function kelvinToCelcius(kelvin) {
-  return kelvin - 273.15;
-}
-
-function kelvinToFahrenheit(kelvin) {
-  return (kelvin - 273.15) * (9 / 5) + 32;
 }

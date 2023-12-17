@@ -6,7 +6,13 @@ export default function HexClock() {
   useEffect(() => {
     const interval = setInterval(() => {
       const date = new Date();
-      const hexString = '#' + date.toLocaleTimeString().replace(/:/g, '');
+      const hexString =
+        '#' +
+        date
+          .toLocaleTimeString('en-US', {
+            hour12: false,
+          })
+          .replace(/:/g, '');
       setHex(hexString);
       document.querySelector('.clock').style.setProperty('--bg', hexString);
     }, 1000);
