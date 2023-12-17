@@ -1,100 +1,99 @@
 .post-wrapper {
-  background-color: #fbf2e3;
-  line-height: 2rem;
-  padding-top: 15vh;
+    line-height: 2rem;
+    padding-top: 15vh;
 }
 
 .blog-content {
-  display: flex;
-  flex-direction: column;
-  min-width: 50vw;
-  min-height: 100vh;
-  background-color: white;
-  justify-content: left;
-  margin: 0 20vw;
-  padding: 4em 2vw;
-  border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    min-width: 50vw;
+    min-height: 100vh;
+    background-color: white;
+    justify-content: left;
+    margin: 0 20vw;
+    padding: 4em 2vw;
+    border-radius: 10px;
 }
 
 .float-bar {
-  display: inline-block;
-  position: sticky;
-  top: 2em;
-  left: 2em;
+    display: inline-block;
+    position: sticky;
+    top: 2em;
+    left: 2em;
 }
 
 .blog-content h1 {
-  font-size: xxx-large;
-  font-weight: bold;
-  text-align: center;
+    font-size: xxx-large;
+    font-weight: bold;
+    text-align: center;
 }
 
 .blog-content h1::after {
-  padding-top: 0;
-  content: '';
-  display: block;
-  line-height: 1rem;
-  height: 2px;
-  background-color: orange;
-  margin-bottom: 1rem;
+    padding-top: 0;
+    content: '';
+    display: block;
+    line-height: 1rem;
+    height: 2px;
+    background-color: orange;
+    margin-bottom: 1rem;
 }
 
 .blog-content h2 {
-  font-size: xx-large;
-  text-align: left;
+    font-size: xx-large;
+    text-align: left;
 }
 
 .blog-content h3 {
-  font-size: x-large;
+    font-size: x-large;
 }
 
 .blog-content h4 {
-  font-size: large;
+    font-size: large;
 }
 
 .blog-content h5 {
-  font-size: 1.25rem;
+    font-size: 1.25rem;
 }
 
 .blog-content h6 {
-  font-size: 1.125rem;
+    font-size: 1.125rem;
 }
 
 .blog-content p {
-  font-size: 1rem;
+    font-size: 1rem;
 }
 
 .blog-content p::after,
 p::before {
-  display: block;
-  content: '';
-  height: 1rem;
-  width: max-content;
-  line-height: 1.25;
+    display: block;
+    content: '';
+    height: 1rem;
+    width: max-content;
+    line-height: 1.25;
 }
 
 .blog-content hr {
-  height: 1px;
-  border: 1px dashed #2d0c13;
+    height: 1px;
+    border: 1px dashed #2d0c13;
 }
 
 .blog-content ul > li::before {
-  content: '';
-  display: inline-block;
-  background-color: blue;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  vertical-align: middle;
-  margin-right: 10px;
-  opacity: 50%;
+    content: '';
+    display: inline-block;
+    background-color: blue;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 10px;
+    opacity: 50%;
 }
 
 .blog-content ul ul,
 ol ol {
-  padding-left: 20px;
+    padding-left: 20px;
 }
 
 .blog-content pre {
-  margin: 1rem 0;
+    margin: 1rem 0;
 }
