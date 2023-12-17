@@ -42,7 +42,21 @@ export default function WeatherWidget(props) {
           setLoading(false);
         });
       },
-      (error) => console.log(error),
+      (error) => {
+        let errorMessage = '';
+        if (error.code === error.PERMISSION_DENIED) {
+          errorMessage = 'Permission denied';
+        } else if (error.code === error.POSITION_UNAVAILABLE) {
+          errorMessage = 'Position unavailable';
+        } else if (error.code === error.TIMEOUT) {
+          errorMessage = 'Position Info Timeout';
+        } else {
+          errorMessage = 'Unknown error';
+        }
+        const errorNode = document.createElement('span');
+        document.querySelector('.footer').appendChild(errorNode).innerText =
+          errorMessage;
+      },
     );
   }, []);
 
