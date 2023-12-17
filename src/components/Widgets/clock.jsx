@@ -15,7 +15,7 @@ export default function HexClock() {
 
   return (
     <div
-      className={`clock relative min-w-fit min-h-[128px] flex justify-center items-center bg-[--bg] lg:text-2xl md:text-xl sm:text-lg rounded-2xl text-white`}
+      className={`clock relative min-w-fit min-h-[128px] flex justify-center items-center bg-[--bg] lg:text-2xl md:text-xl sm:text-lg rounded-2xl text-white hover:scale-105 transition-all`}
     >
       <span id='hex-clock'>{hex}</span>
     </div>

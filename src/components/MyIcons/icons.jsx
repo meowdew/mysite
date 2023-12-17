@@ -66,6 +66,7 @@ export const PhotographyIcon = () => {
     </svg>
   );
 };
+
 export const GamingIcon = () => {
   return (
     <svg
@@ -126,22 +127,6 @@ export const CopyRightIcon = () => {
   );
 };
 
-export const CloudIcon = () => {
-  return (
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      height='32'
-      width='40'
-      viewBox='0 0 640 512'
-    >
-      <path
-        fill='#d87753'
-        d='M0 336c0 79.5 64.5 144 144 144H512c70.7 0 128-57.3 128-128c0-61.9-44-113.6-102.4-125.4c4.1-10.7 6.4-22.4 6.4-34.6c0-53-43-96-96-96c-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32C167.6 32 96 103.6 96 192c0 2.7 .1 5.4 .2 8.1C40.2 219.8 0 273.2 0 336z'
-      />
-    </svg>
-  );
-};
-
 export const SearchIcon = () => {
   return (
     <svg
@@ -183,6 +168,19 @@ export const UpArrowIcon = () => {
       viewBox='0 0 384 512'
     >
       <path d='M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z' />
+    </svg>
+  );
+};
+
+export const LocationIcon = () => {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      height='20'
+      width='15'
+      viewBox='0 0 384 512'
+    >
+      <path d='M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z' />
     </svg>
   );
 };
