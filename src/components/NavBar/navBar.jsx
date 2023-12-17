@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Contact from '../Contact/contact';
 import AboutMe from '../AboutMe/aboutMe';
 
-const NavigationMenu = (props) => {
+const NavBar = (props) => {
   const navigate = useNavigate();
   const [selectedKey, setSelectedKey] = useState('0');
   const [contactOpen, setContactOpen] = useState(false);
@@ -74,4 +74,4 @@ const NavigationMenu = (props) => {
   );
 };
 
-export default NavigationMenu;
+export default NavBar;

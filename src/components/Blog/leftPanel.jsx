@@ -1,9 +1,16 @@
 import React from 'react';
+import { v4 } from 'uuid';
 import { Divider, Tag } from 'antd';
 import { SearchIcon } from '../MyIcons/icons';
 
 export default function LeftPanel(props) {
-  const { blogs, tagStat, categoryStat, handleCategoryLabelClick } = props;
+  const {
+    blogs,
+    tagStat,
+    categoryStat,
+    handleCategoryLabelClick,
+    handleTagClick,
+  } = props;
 
   const URL = process.env.REACT_APP_URL_ENDPOINT;
 
@@ -63,33 +70,48 @@ export default function LeftPanel(props) {
         </div>
         <div
           className={
-            'tags w-full h-32 backdrop-blur bg-white rounded-xl bg-opacity-75 flex p-1 flex-wrap justify-center items-center'
+            'tags w-full min-h-[8rem] backdrop-blur bg-white rounded-xl bg-opacity-75 flex p-1 flex-wrap justify-center items-center'
           }
         >
+          <Divider
+            children={'Featured Tags'.toUpperCase()}
+            className={'font-black font-sans'}
+          />
           {tagStat.map((tag) => {
             return (
-              <Tag color={getRandomColor()} className={'h-1/5'}>
-                {tag?._id}
-              </Tag>
+              <button onClick={handleTagClick(tag?._id)} key={v4()}>
+                <Tag color={getRandomColor()} className={'h-1/5'}>
+                  {tag?._id}
+                </Tag>
+              </button>
             );
           })}
         </div>
         <div
           className={
-            'categories w-full h-32 backdrop-blur bg-white rounded-xl bg-opacity-75 flex justify-center items-center flex-wrap'
+            'categories w-full min-h-[8rem] backdrop-blur bg-white rounded-xl bg-opacity-75 flex justify-center items-center flex-wrap'
           }
         >
-          {categoryStat.map((category) => {
-            return (
-              <Tag
-                className={'h-1/5'}
-                onClick={handleCategoryLabelClick(category?._id)}
-                color={getRandomColor()}
-              >
-                {category?._id}
-              </Tag>
-            );
-          })}
+          <Divider
+            children={'Featured Category'.toUpperCase()}
+            className={'font-black font-sans'}
+          />
+          <ul>
+            {categoryStat.map((category) => {
+              return (
+                <li
+                  onClick={handleCategoryLabelClick(category?._id)}
+                  key={v4()}
+                >
+                  <button>
+                    <Tag className={'h-1/5'} color={getRandomColor()}>
+                      {category?._id}
+                    </Tag>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     </>

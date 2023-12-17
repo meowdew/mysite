@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 } from 'uuid';
 import { Drawer } from 'antd';
 
 import './aboutMe.css';
@@ -43,10 +44,10 @@ const AboutMe = (props) => {
           👉My Tech Stack:
           <ul>
             <br />
-            {languages.map((item, index) => {
+            {languages.map((item) => {
               return (
                 <li
-                  key={index}
+                  key={v4()}
                   className={'font-sans'}
                   style={{ lineHeight: '1vh', textAlign: 'center' }}
                 >

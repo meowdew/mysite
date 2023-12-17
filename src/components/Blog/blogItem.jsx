@@ -17,7 +17,7 @@ export default function BlogItem(props) {
         <div className={'text-base indent-8 font-medium'}>{post?.abstract}</div>
         <div
           className={
-            'flex gap-1 w-fit ml-6 px-2 py-1 rounded-xl bg-orange-600 items-center shadow-2xl'
+            'flex gap-1 w-fit ml-6 px-2 py-1 rounded-xl bg-gray-300 items-center shadow-2xl'
           }
         >
           <span className={'inline-flex'}>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 } from 'uuid';
 import {
   CodeIcon,
   GamingIcon,
@@ -47,6 +48,7 @@ export default function ILike(props) {
         {hobbies.map((hobby) => {
           return (
             <div
+              key={v4()}
               className={
                 'bg-transparent text-white flex-grow lg:text-2xl md:text-xl sm:text-lg hover:scale-125 transition-all whitespace-break-spaces '
               }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 } from 'uuid';
 import { Skeleton } from 'antd';
 import BlogItem from './blogItem';
 
@@ -16,10 +17,10 @@ export default function MidPanel(props) {
           {blogsLoading ? (
             <Skeleton active round paragraph={{ rows: 6 }} />
           ) : (
-            blogs.map((post, index) => {
+            blogs.map((post) => {
               return (
                 <li
-                  key={index}
+                  key={v4()}
                   className={
                     'blog-item w-full h-48 flex flex-col gap-4 border-b-2'
                   }
