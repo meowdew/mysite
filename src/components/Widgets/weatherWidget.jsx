@@ -46,10 +46,10 @@ export default function WeatherWidget(props) {
           setCountry(country);
         });
 
-        // fetchWeather().then((res) => {
-        //   setWeather(res.data.current);
-        //   setLoading(false);
-        // });
+        fetchWeather().then((res) => {
+          setWeather(res.data.current);
+          setLoading(false);
+        });
       },
       (error) => {
         let errorMessage = '';
