@@ -15,7 +15,7 @@ export default function BackToTop(props) {
         setVisible(false);
       }
     });
-  }, [visible]);
+  }, []);
 
   return (
     <>

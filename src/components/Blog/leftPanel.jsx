@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
-import { Divider, Tag } from 'antd';
+import { Divider, Tag, message } from 'antd';
 import { SearchIcon } from '../MyIcons/icons';
 
 export default function LeftPanel(props) {
   const {
     blogs,
+    setBlogs,
     tagStat,
     categoryStat,
     handleCategoryLabelClick,
@@ -13,20 +14,32 @@ export default function LeftPanel(props) {
   } = props;
   const URL = process.env.REACT_APP_URL_ENDPOINT;
 
+  const [api, contextHolder] = message.useMessage();
+
+  const openMessage = (text) => {
+    api.info(text);
+  };
+
   const [keyword, setKeyword] = useState('');
 
-  console.log('keyword', keyword);
-
-  useEffect(() => {
-    if (keyword === '') return;
+  function handleSearchClick() {
+    if (keyword === '') {
+      openMessage('Please enter keyword to search');
+      return;
+    }
     const filteredBlogs = blogs.filter((blog) => {
       return blog?.title.toLowerCase().includes(keyword.toLowerCase());
     });
-    console.log('filteredBlogs', filteredBlogs);
-  });
+    if (filteredBlogs.length === 0) {
+      openMessage('No result found');
+    } else {
+      setBlogs(filteredBlogs);
+    }
+  }
 
   return (
     <>
+      {contextHolder}
       <div className={'left-panel w-1/5 h-full flex flex-col rounded-xl gap-4'}>
         <div className={'rounded-xl backdrop-blur-sm backdrop-brightness-200 '}>
           <div className={'avatar flex w-full justify-center my-10'}>
@@ -76,7 +89,10 @@ export default function LeftPanel(props) {
             className={'rounded-xl pl-2 w-full h-full'}
             onBlur={(e) => setKeyword(e.target.value)}
           />
-          <button className={'absolute right-0 h-full mr-2'}>
+          <button
+            className={'absolute right-0 h-full mr-2'}
+            onClick={handleSearchClick}
+          >
             <SearchIcon />
           </button>
         </div>

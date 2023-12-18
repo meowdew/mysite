@@ -83,6 +83,7 @@ const Blog = (props) => {
     >
       <LeftPanel
         blogs={blogs}
+        setBlogs={setBlogs}
         tagStat={tagStat}
         categoryStat={categoryStat}
         handleCategoryLabelClick={handleCategoryLabelClick}

@@ -21,19 +21,18 @@ const Gallery = (props) => {
   }, []);
 
   return (
-    <div className='gallery-wrapper'>
+    <div className=''>
       {loading ? (
         `Loading`
       ) : (
-        <div className={'flex align-middle w-fit h-fit viewer'}>
+        <div
+          className={'align-middle w-fit h-fit my-8 mx-4'}
+          style={{ columnCount: 3 }}
+        >
           {images.map((image, index) => {
             return (
               <div key={index}>
-                <Image
-                  src={`${URL}/images/album/${image.filename}`}
-                  height={'25vh'}
-                  width={'25vw'}
-                />
+                <Image src={`${URL}/images/album/${image.filename}`} />
               </div>
             );
           })}
