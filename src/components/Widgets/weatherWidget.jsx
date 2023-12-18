@@ -39,17 +39,33 @@ export default function WeatherWidget(props) {
           );
         };
 
-        fetchGeoLocation().then((res) => {
-          const city = res.data.results[0].address_components[2].short_name;
-          const country = res.data.results[0].address_components[5].short_name;
-          setCity(city);
-          setCountry(country);
-        });
-
-        fetchWeather().then((res) => {
-          setWeather(res.data.current);
+        if (
+          sessionStorage.getItem('city') &&
+          sessionStorage.getItem('country')
+        ) {
+          setCity(sessionStorage.getItem('city'));
+          setCountry(sessionStorage.getItem('country'));
+        } else {
+          fetchGeoLocation().then((res) => {
+            const city = res.data.results[0].address_components[2].short_name;
+            const country =
+              res.data.results[0].address_components[5].short_name;
+            sessionStorage.setItem('city', city);
+            sessionStorage.setItem('country', country);
+            setCity(city);
+            setCountry(country);
+          });
+        }
+        if (sessionStorage.getItem('weather')) {
+          setWeather(JSON.parse(sessionStorage.getItem('weather')));
           setLoading(false);
-        });
+        } else {
+          fetchWeather().then((res) => {
+            sessionStorage.setItem('weather', JSON.stringify(res.data.current));
+            setWeather(res.data.current);
+            setLoading(false);
+          });
+        }
       },
       (error) => {
         let errorMessage = '';
