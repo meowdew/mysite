@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Skeleton } from 'antd';
+import { Skeleton, notification } from 'antd';
 import axios from 'axios';
 import { LocationIcon } from '../MyIcons/icons';
 import WeatherWidgetBody from './weatherWidgetBody';
@@ -9,6 +9,15 @@ export default function WeatherWidget(props) {
   const [country, setCountry] = useState('--');
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = (text) => {
+    api.info({
+      message: 'Weather Widget',
+      description: text,
+      placement: 'topRight',
+      duration: 0,
+    });
+  };
 
   const G_MAP_API_KEY = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
   const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
@@ -37,31 +46,31 @@ export default function WeatherWidget(props) {
           setCountry(country);
         });
 
-        fetchWeather().then((res) => {
-          setWeather(res.data.current);
-          setLoading(false);
-        });
+        // fetchWeather().then((res) => {
+        //   setWeather(res.data.current);
+        //   setLoading(false);
+        // });
       },
       (error) => {
         let errorMessage = '';
         if (error.code === error.PERMISSION_DENIED) {
-          errorMessage = 'Permission denied';
+          errorMessage = 'Please enable location permission';
         } else if (error.code === error.POSITION_UNAVAILABLE) {
-          errorMessage = 'Position unavailable';
+          errorMessage = 'Location information is unavailable';
         } else if (error.code === error.TIMEOUT) {
-          errorMessage = 'Position Info Timeout';
+          errorMessage = 'The request to get user location timed out';
         } else {
-          errorMessage = 'Unknown error';
+          errorMessage = 'An unknown error occurred';
         }
-        const errorNode = document.createElement('span');
-        document.querySelector('.footer').appendChild(errorNode).innerText =
-          errorMessage;
+        api.destroy();
+        openNotification(errorMessage);
       },
     );
   }, []);
 
   return (
     <>
+      {contextHolder}
       <div
         className={`min-w-full min-h-[200px] rounded-xl backdrop-blur-2xl bg-gradient-to-r from-blue-400 to-blue-600 flex flex-col shadow-xl hover:scale-105 transition-all`}
       >
@@ -76,7 +85,7 @@ export default function WeatherWidget(props) {
           <span>{`${city}, ${country}`}</span>
         </div>
         {loading ? (
-          <Skeleton paragraph={{ rows: 4 }} />
+          <Skeleton active paragraph={{ rows: 4 }} />
         ) : (
           <WeatherWidgetBody weather={weather} />
         )}
