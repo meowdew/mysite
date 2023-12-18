@@ -14,8 +14,8 @@ export default function WeatherWidget(props) {
     api.info({
       message: 'Weather Widget',
       description: text,
-      placement: 'topRight',
-      duration: 0,
+      placement: 'bottomRight',
+      duration: 3,
     });
   };
 

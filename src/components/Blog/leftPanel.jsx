@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
 import { Divider, Tag } from 'antd';
 import { SearchIcon } from '../MyIcons/icons';
@@ -11,8 +11,19 @@ export default function LeftPanel(props) {
     handleCategoryLabelClick,
     handleTagClick,
   } = props;
-
   const URL = process.env.REACT_APP_URL_ENDPOINT;
+
+  const [keyword, setKeyword] = useState('');
+
+  console.log('keyword', keyword);
+
+  useEffect(() => {
+    if (keyword === '') return;
+    const filteredBlogs = blogs.filter((blog) => {
+      return blog?.title.toLowerCase().includes(keyword.toLowerCase());
+    });
+    console.log('filteredBlogs', filteredBlogs);
+  });
 
   return (
     <>
@@ -63,6 +74,7 @@ export default function LeftPanel(props) {
           <input
             placeholder={'type here to search'}
             className={'rounded-xl pl-2 w-full h-full'}
+            onBlur={(e) => setKeyword(e.target.value)}
           />
           <button className={'absolute right-0 h-full mr-2'}>
             <SearchIcon />
