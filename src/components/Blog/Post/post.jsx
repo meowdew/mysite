@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FloatButton } from 'antd';
-import {
-  DownCircleTwoTone,
-  HeartTwoTone,
-  UpCircleTwoTone,
-} from '@ant-design/icons';
+import { HeartTwoTone, UpCircleTwoTone } from '@ant-design/icons';
 import { marked } from 'marked';
 import purify from 'dompurify';
 import hljs from 'highlight.js';
@@ -23,25 +19,14 @@ marked.setOptions({
   },
 });
 
-// const renderer = new marked.Renderer();
-// renderer.paragraph = (text) => {
-//   const replacedText = text.replace(/\n/g, '<br><br>');
-//   return `<p>${replacedText}</p>`;
-// };
-
-// marked.use({ renderer });
-
 const Post = (props) => {
-  const { setNavBarVisibility } = props;
   const token = process.env.REACT_APP_BLOG_OBTAIN_TOKEN;
   const URL = process.env.REACT_APP_URL_ENDPOINT;
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [isLiked, setIsLiked] = useState(false);
   const [markdown, setMarkdown] = useState(null);
-
   useEffect(() => {
-    setNavBarVisibility(true);
     const fetchPost = async () => {
       const res = await axios.post(`${URL}/query/posts`, {
         credentials: token,

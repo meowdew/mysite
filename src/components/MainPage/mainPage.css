@@ -1,91 +1,97 @@
-.main-page-container {
-  background: linear-gradient(
-      192deg,
-      rgba(255, 1, 1, 0.8),
-      rgba(255, 33, 123, 0) 75%
-    ),
-    linear-gradient(125deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 75%),
-    linear-gradient(322deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 75%);
-  min-width: 100vw;
-  min-height: 100vh;
-  display: block;
-  font-size: 12vh;
-  font-weight: 900;
+.hello {
+  position: relative;
+  background-image: url('../../../public/birmingham-museums-trust-B5evCyxk9Uo-unsplash.jpg');
+  color: transparent;
+  --webkit-background-clip: text;
+  background-clip: text;
+  background-position: top center;
+  text-shadow: 5px 10px;
+  transform: perspective(1000px) rotateX(10deg);
+  width: 100%;
+  animation: flow 10s ease-in-out infinite;
+  z-index: -1;
 }
 
-.main-page-divider {
-  visibility: hidden;
-}
-
-.main-page-footer {
-  background-color: transparent;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  font-size: 16px;
-}
-
-.main-page-footer > span {
-  width: 1em;
-}
-
-.title-container {
-  height: 42vh;
-  aspect-ratio: auto;
-  display: flex;
-  justify-content: center;
-}
-
-.main-page-title {
-  font-weight: 800;
-  font-size: 20vh;
-  display: flex;
-  vertical-align: middle;
-  text-align: center;
-}
-
-.marquee {
-  height: 3vh;
-}
-
-.carousel-content > div {
-  margin-top: 2em;
-  display: flex;
-  justify-content: center;
-  font-size: 3vh;
-}
-
-.black-circle {
-  color: #000;
-  background-color: #000;
-  border-radius: 10vh;
-  width: 15vh;
-  height: 15vh;
-  margin-top: 1.25rem;
-  animation: black-circle-change-color 3s infinite ease;
-}
-
-.white-rectangle {
-  color: #fff;
-  background-color: #fff;
-  border-radius: 8vh;
-  width: 15vw;
-  height: 15vh;
-  margin-top: 1.25rem;
-  animation: white-rectangle-to-circle 3s infinite ease;
-}
-
-@keyframes white-rectangle-to-circle {
-  to {
-    border-radius: 10vh;
-    width: 15vh;
-    height: 15vh;
+@keyframes flow {
+  0% {
+    background-position: top center;
+  }
+  50% {
+    background-position: bottom center;
+  }
+  100% {
+    background-position: top center;
   }
 }
 
-@keyframes black-circle-change-color {
-  to {
-    background: radial-gradient(ellipse at top, #e2e7bf, transparent),
-      radial-gradient(ellipse at bottom, #f9e8d0, transparent);
+.sentence {
+  font-weight: 700;
+  flex-shrink: 0;
+  font-size: 80px;
+  overflow: hidden;
+  text-shadow:
+    #0eb0c9 0 0 10px,
+    #0eb0c9 0 0 20px,
+    #0eb0c9 0 0 30px,
+    #0eb0c9 0 0 40px;
+}
+
+.sentence[aria-label='im'] {
+  position: relative;
+  animation: slide 3s ease-in infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.card-container > div:nth-child(1) {
+  transform: translate(75%, 0);
+}
+
+.card-container > div:nth-child(2) {
+  transform: translate(25%, 0);
+}
+
+.card-container > div:nth-child(3) {
+  transform: translate(100%, 0);
+}
+
+.card-container > div:hover {
+  text-shadow:
+    #0eb0c9 0 0 10px,
+    #0eb0c9 0 0 20px,
+    #0eb0c9 0 0 30px,
+    #0eb0c9 0 0 40px;
+}
+
+.hobby-container > div:nth-child(2),
+.hobby-container > div:nth-child(3) {
+  margin-top: 4rem;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
   }
 }

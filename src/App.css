@@ -1,19 +1,34 @@
-body {
+body,
+html {
   cursor: url('../public/icons8-cursor.svg'), auto;
 }
+
 a:hover {
   cursor: url('../public/icons8-hand-cursor.svg'), pointer;
 }
+
 button:hover {
   cursor: url('../public/icons8-hand-cursor.svg'), pointer;
 }
+
 span[role='img'][aria-label='github'],
 [aria-label='linkedin']:hover {
   cursor: url('../public/icons8-hand-cursor.svg'), pointer;
 }
+
 ul[role='menu']:hover {
   cursor: url('../public/icons8-cursor.svg'), auto;
 }
+
 li[role='menuitem']:hover {
   cursor: url('../public/icons8-cursor.svg'), auto;
+}
+
+html {
+  background-image: url('../public/bg-2.jpg');
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  scroll-behavior: smooth;
+  background-attachment: fixed;
 }

@@ -1,48 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-import GreetingPage from './components/GreetingPage/greetingPage';
 import MainPage from './components/MainPage/mainPage';
 import Gallery from './components/Gallery/gallery';
 import Blog from './components/Blog/blog';
 import Post from './components/Blog/Post/post';
+import NavBar from './components/NavBar/navBar';
 import './App.css';
-import NavigationMenu from './components/NavigationMenu/navigationMenu';
 
 const App = () => {
-  const [navBarVisibility, setNavBarVisibility] = useState(false);
   return (
     <BrowserRouter basename='/'>
-      <div
-        style={{
-          float: 'left',
-          visibility: navBarVisibility ? 'visible' : 'hidden',
-        }}
-      >
-        <NavigationMenu />
-      </div>
+      <NavBar />
       <Routes>
-        <Route
-          exact
-          path='/'
-          element={<GreetingPage setNavBarVisibility={setNavBarVisibility} />}
-        />
-        <Route
-          path='/mainpage'
-          element={<MainPage setNavBarVisibility={setNavBarVisibility} />}
-        />
-        <Route
-          path='/gallery'
-          element={<Gallery setNavBarVisibility={setNavBarVisibility} />}
-        />
-        <Route
-          path='/blog'
-          element={<Blog setNavBarVisibility={setNavBarVisibility} />}
-        />
-        <Route
-          path='/blog/posts/:id'
-          element={<Post setNavBarVisibility={setNavBarVisibility} />}
-        />
+        <Route path='/' element={<MainPage />} />
+        <Route path='/gallery' element={<Gallery />} />
+        <Route path='/blog' element={<Blog />} />
+        <Route path='/blog/posts/:id' element={<Post />} />
       </Routes>
     </BrowserRouter>
   );
